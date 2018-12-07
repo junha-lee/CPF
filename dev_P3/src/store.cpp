@@ -3,8 +3,12 @@
 Store::Store(){
     Ingredient i_water("water", 2, 1000);
     Ingredient i_bean("beans", 1, 2000);
+	Ingredient i_orange("orange", 1, 1000);
+	Ingredient i_apple("apple", 1, 1000);
     _ingredient_v.push_back(i_water);
     _ingredient_v.push_back(i_bean);
+	_ingredient_v.push_back(i_orange);
+	_ingredient_v.push_back(i_apple);
     
     req_t req;
     Coffee c_americano("Americano", 5000);
@@ -20,10 +24,29 @@ Store::Store(){
     req.amount = 1;
     c_water.setRequirement(req);
 
-    _coffee_v.push_back(c_americano);
-    _coffee_v.push_back(c_water);
 
-    _sales = 0;
+	Coffee c_orangejuice("orangejuice", 2000);
+	req.ingredient = i_water;
+	req.amount = 1;
+	c_orangejuice.setRequirement(req);
+	req.ingredient = i_orange;
+	req.amount = 1;
+	c_orangejuice.setRequirement(req);
+
+	Coffee c_applejuice("applejuice", 2000);
+	req.ingredient = i_water;
+	req.amount = 1;
+	c_applejuice.setRequirement(req);
+	req.ingredient = i_apple;
+	req.amount = 1;
+	c_applejuice.setRequirement(req);
+	
+	_coffee_v.push_back(c_americano);
+	_coffee_v.push_back(c_water);
+	_coffee_v.push_back(c_orangejuice);
+	_coffee_v.push_back(c_applejuice);
+
+	_sales = 0;
 }
 
 std::string Store::makeMenu(){
