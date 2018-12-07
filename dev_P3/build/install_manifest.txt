@@ -1,0 +1,2 @@
+/home/songsang/CPF/dev_P3/bin/manager
+/home/songsang/CPF/dev_P3/bin/customer

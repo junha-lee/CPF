@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/manager.dir/src/common.cpp.o CMakeFiles/manager.dir/src/manager.cpp.o CMakeFiles/manager.dir/src/m_impl.cpp.o CMakeFiles/manager.dir/src/store.cpp.o  -o manager 
