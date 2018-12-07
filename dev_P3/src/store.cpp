@@ -41,21 +41,21 @@ Store::Store(){
 	req.amount = 1;
 	c_applejuice.setRequirement(req);
 
-	Coffee c_appleorangejuice("AppleOrangejuice", 5000);
+	Coffee c_fruitjuice("Fruitjuice", 5000);
 	req.ingredient = i_water;
 	req.amount = 1;
-	c_appleorangejuice.setRequirement(req);
+	c_fruitjuice.setRequirement(req);
 	req.ingredient = i_apple;
 	req.amount = 1;
-	c_appleorangejuice.setRequirement(req);
+	c_fruitjuice.setRequirement(req);
 	req.ingredient = i_orange;
 	req.amount = 1;
-	c_appleorangejuice.setRequirement(req);
+	c_fruitjuice.setRequirement(req);
 	_coffee_v.push_back(c_americano);
 	_coffee_v.push_back(c_water);
 	_coffee_v.push_back(c_orangejuice);
 	_coffee_v.push_back(c_applejuice);
-	_coffee_v.push_back(c_appleorangejuice);
+	_coffee_v.push_back(c_fruitjuice);
 	
 
 	_sales = 0;
