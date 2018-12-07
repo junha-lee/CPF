@@ -55,7 +55,7 @@ Store::Store(){
 	_coffee_v.push_back(c_water);
 	_coffee_v.push_back(c_orangejuice);
 	_coffee_v.push_back(c_applejuice);
-	_coffee_v.push_back(c_appleorangejuice)
+	_coffee_v.push_back(c_appleorangejuice);
 	
 
 	_sales = 0;
