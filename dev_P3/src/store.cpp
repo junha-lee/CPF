@@ -50,7 +50,7 @@ Store::Store(){
 	c_appleorangejuice.setRequirement(req);
 	req.ingredient = i_orange;
 	req.amount = 1;
-	
+	c_appleorangejuice.setRequirement(req);
 	_coffee_v.push_back(c_americano);
 	_coffee_v.push_back(c_water);
 	_coffee_v.push_back(c_orangejuice);
