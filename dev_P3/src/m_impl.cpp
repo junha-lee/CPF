@@ -92,9 +92,12 @@ int Manager::process(const msg_t& msg){
     else if (strcmp(msg.cmd, CMD_MAKE_ORDER)==0){
         std::string c(msg.data);
         take_order(c);
+        
         new_msg = make_msg(CMD_MANAGER, "");
         send_msg(_wfd, new_msg);
-        log("[Manager] coffee here");
+        log("[Manager] ");
+        std::cout<<c;
+        log(" here");
         close(_wfd);
     }
     else if (strcmp(msg.cmd, CMD_BYE)==0){

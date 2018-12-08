@@ -62,7 +62,7 @@ class Store{
         std::string makeMenu();
         int getSales(){return _sales;};
         int getmoney(){return _money;};
-        int take_order(std::string coffee);
+        int take_order(std::string &coffee);
         void printAllIngredients();
         void buyIngredients();
     private:
