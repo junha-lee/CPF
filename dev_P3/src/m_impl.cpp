@@ -1,8 +1,17 @@
 #include "manager.h"
 #include <iostream>
 #include <string>
+#include <ctime>
+
 
 static bool admin_mode = false;
+
+
+int i = 0;
+
+std::time_t t = std::time(0);
+std::tm* now = std::localtime(&t);
+int day = now->tm_mday;
 
 static void sig_handler(int sig){
     std::cout<<"\nAdmin Mode On"<<std::endl;
@@ -75,7 +84,7 @@ int Manager::process(const msg_t& msg){
         close(_wfd);
     }
     else if (strcmp(msg.cmd, CMD_SHOW_MENU)==0){
-        new_msg = make_msg(CMD_MANAGER, _store.makeMenu().c_str());
+	new_msg = make_msg(CMD_MANAGER, _store.makeMenu().c_str());
         send_msg(_wfd, new_msg);
         log("[Manager] sent menu");
         close(_wfd);
@@ -89,6 +98,7 @@ int Manager::process(const msg_t& msg){
         close(_wfd);
     }
     else if (strcmp(msg.cmd, CMD_BYE)==0){
+	i++;
         new_msg = make_msg(CMD_MANAGER, "");
         send_msg(_wfd, new_msg);
         log("[Manager] done");
@@ -101,12 +111,34 @@ int Manager::process(const msg_t& msg){
 }
 
 int Manager::admin_handler(){
+
+
+
     std::string input;
     while(1){
+
+        std::time_t t = std::time(0);
+        std::tm* now = std::localtime(&t);
+        int year = now->tm_year + 1900;
+        int month = now->tm_mon + 1;
+        int dayOfMonth = now->tm_mday;
+        int hour = now->tm_hour;
+        int minute = now->tm_min;
+        if(day!=dayOfMonth){
+        i=0;
+        day=dayOfMonth;
+    }
+
+
+        std::cout<<std::endl<<"Time:"<<year<<"-"<<month<<"-"<<dayOfMonth<<std::endl<<hour<<"-"<<minute<<std::endl;
         std::cout<<"\nPlease give an input"<<std::endl;
         std::cout<<"1. check sales (type 1)"<<std::endl;
         std::cout<<"2. check remaining ingredients (type 2)"<<std::endl;
-        std::cout<<"3. go back to the default mode (type q)"<<std::endl;
+        std::cout<<"3. buy ingredients(type 3)"<<std::endl;
+        std::cout<<"4. today's visitor number(type 4)"<<std::endl;
+	    std::cout<<"5. go back to the default mode (type q)"<<std::endl;
+
+
         std::cin>>input;
 
         if (input=="1"){
@@ -114,7 +146,18 @@ int Manager::admin_handler(){
         }
         else if (input=="2"){
             _store.printAllIngredients();
-        }
+
+        }else if(input == "3"){
+            _store.printAllIngredients();
+            _store.buyIngredients();
+            
+            
+            
+            
+	}
+	    else if(input == "4"){
+		std::cout<<"today's visitor number = "<< i <<std::endl;
+	}
         else if (input=="q"){
             break;
         }

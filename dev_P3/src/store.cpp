@@ -1,10 +1,10 @@
 #include "store.h"
 
 Store::Store(){
-    Ingredient i_water("water", 2, 1000);
-    Ingredient i_bean("beans", 1, 2000);
-	Ingredient i_orange("orange", 1, 1000);
-	Ingredient i_apple("apple", 1, 1000);
+    Ingredient i_water("water", 20, 1000);
+    Ingredient i_bean("beans", 10, 2000);
+	Ingredient i_orange("orange", 20, 1000);
+	Ingredient i_apple("apple", 20, 1000);
     _ingredient_v.push_back(i_water);
     _ingredient_v.push_back(i_bean);
 	_ingredient_v.push_back(i_orange);
@@ -59,6 +59,7 @@ Store::Store(){
 	
 
 	_sales = 0;
+    _money = 4000;
 }
 
 std::string Store::makeMenu(){
@@ -99,7 +100,7 @@ int Store::take_order(std::string coffee){
         Coffee c = _coffee_v[i];
         if (coffee==c.getName()){
             _sales += c.getPrice();
-
+            _money += c.getPrice();
             for (int j=0;j<c._required_ingredient_v.size();j++){
                 req_t req_i = c._required_ingredient_v[j];
                 for (int k=0;k<_ingredient_v.size();k++){
@@ -117,6 +118,28 @@ int Store::take_order(std::string coffee){
 void Store::printAllIngredients(){
     std::cout<<"Remaining Ingredients"<<std::endl;
     for (int i=0;i<_ingredient_v.size();i++){
-        std::cout<<_ingredient_v[i].getName()<<": "<<_ingredient_v[i].getAmount()<<std::endl;
+        std::cout<<i+1<<"."<<_ingredient_v[i].getName()<<": "<<_ingredient_v[i].getAmount()<<std::endl;
     }
 }
+void Store::buyIngredients(){
+    
+    int Buy;
+			std::cin >> Buy;
+            int numbuy = 0;
+			int sumBuy = 0;
+			
+            std::cout << "How many would you like to buy?";
+			std::cin >> numbuy;
+			
+            sumBuy = _ingredient_v[Buy-1].increaseAmount(numbuy);
+
+            if (getmoney() > sumBuy){
+                _money-=sumBuy;
+					_ingredient_v[Buy-1].increase(numbuy);
+					std::cout << "Price:" << sumBuy << std::endl;
+				}
+                else {
+					std::cout << " There is not enough money. " << std::endl;
+				}
+            }
+

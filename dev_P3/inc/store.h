@@ -16,11 +16,15 @@ class Ingredient{
     public:
         std::string getName(){return _name;};
         int getAmount(){return _amount;};
+        int increaseAmount(int numbuy){
+			int sumBuy = 0;
+            sumBuy = (_price)*numbuy;
+            return sumBuy;};
+            int increase(int numbuy){
+                _amount+= numbuy;
+            };
         void dec(int delta){_amount -= delta;};
-        
-    private:
         int getPrice(){return _price;};
-
     private:
         std::string _name;
         int _amount;
@@ -57,9 +61,10 @@ class Store{
     public:
         std::string makeMenu();
         int getSales(){return _sales;};
+        int getmoney(){return _money;};
         int take_order(std::string coffee);
         void printAllIngredients();
-    
+        void buyIngredients();
     private:
         bool isAvailable(const Coffee& c);
 
@@ -68,6 +73,7 @@ class Store{
         std::vector<Ingredient> _ingredient_v;
 
         int _sales;
+        int _money;
 };
 
 #endif
