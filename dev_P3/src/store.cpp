@@ -113,6 +113,7 @@ int Store::take_order(std::string &coffee){
           for(int i=1;i<_ingredient_v.size();i++){
               if(_ingredient_v[i].getAmount()>=max){
                   menuchose=i;
+				  max = _ingredient_v[i].getAmount();
               }
           }
           if((_ingredient_v[2].getAmount()==_ingredient_v[3].getAmount())&&menuchose==3){
