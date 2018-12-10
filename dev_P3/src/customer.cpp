@@ -12,6 +12,7 @@ int main(){
     }
     
     Customer customer(customer_fifo);
+    system("clear");
     customer.start();
     
     return 0;

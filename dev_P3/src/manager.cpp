@@ -8,6 +8,7 @@ int main(){
     }
 
     Manager manager(manager_fifo);
+    system("clear");
     manager.start();
     
     return 0;
