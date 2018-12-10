@@ -92,7 +92,6 @@ int Manager::process(const msg_t& msg){
     else if (strcmp(msg.cmd, CMD_MAKE_ORDER)==0){
         std::string c(msg.data);
         take_order(c);
-        
         new_msg = make_msg(CMD_MANAGER, "");
         send_msg(_wfd, new_msg);
         log("[Manager] ");
@@ -132,7 +131,7 @@ int Manager::admin_handler(){
         day=dayOfMonth;
     }
 
-
+        
         std::cout<<std::endl<<"Time:"<<year<<"-"<<month<<"-"<<dayOfMonth<<std::endl<<hour<<"-"<<minute<<std::endl;
         std::cout<<"\nPlease give an input"<<std::endl;
         std::cout<<"1. check sales (type 1)"<<std::endl;
@@ -146,6 +145,7 @@ int Manager::admin_handler(){
 
         if (input=="1"){
             std::cout<<"Sales: "<<_store.getSales()<<std::endl;
+	  std::cout<<"Money: "<<_store.getmoney()<<std::endl;
         }
         else if (input=="2"){
             _store.printAllIngredients();
