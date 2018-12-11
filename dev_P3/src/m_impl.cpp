@@ -126,10 +126,7 @@ int Manager::admin_handler(){
         int dayOfMonth = now->tm_mday;
         int hour = now->tm_hour;
         int minute = now->tm_min;
-        if(day!=dayOfMonth){
-        i=0;
-        day=dayOfMonth;
-    }
+        
 
         
         std::cout<<std::endl<<"Time:"<<year<<"-"<<month<<"-"<<dayOfMonth<<std::endl<<hour<<"-"<<minute<<std::endl;
@@ -159,6 +156,17 @@ int Manager::admin_handler(){
             
 	}
 	    else if(input == "4"){
+			std::time_t t = std::time(0);
+			std::tm* now = std::localtime(&t);
+			int year = now->tm_year + 1900;
+			int month = now->tm_mon + 1;
+			int dayOfMonth = now->tm_mday;
+			int hour = now->tm_hour;
+			int minute = now->tm_min;
+			if (day != dayOfMonth) {
+				i = 0;
+				day = dayOfMonth;
+			}
 		std::cout<<"today's visitor number = "<< i <<std::endl;
 	}
         else if (input=="q"){
